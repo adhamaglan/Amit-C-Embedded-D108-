@@ -9,7 +9,6 @@
 #include "../../service/std_types.h"
 #include "../../service/bit_math.h"
 #include "../../MCAL/DIO/dio.h"
-#include "KPAD_priv.h"
 #include "KPAD_config.h"
 #include "KPAD_int.h"
 #include <util/delay.h>

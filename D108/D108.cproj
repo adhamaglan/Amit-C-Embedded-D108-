@@ -166,9 +166,6 @@
     <Compile Include="HAL\KPAD\KPAD_int.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\KPAD\KPAD_priv.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="HAL\KPAD\KPAD_prog.c">
       <SubType>compile</SubType>
     </Compile>
@@ -179,6 +176,18 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\DIO\dio.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\EXTI\exti.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\EXTI\exti.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\GIE\gie.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\GIE\gie.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\regdef.h">
@@ -197,6 +206,8 @@
     <Folder Include="MCAL" />
     <Folder Include="HAL" />
     <Folder Include="MCAL\DIO" />
+    <Folder Include="MCAL\GIE" />
+    <Folder Include="MCAL\EXTI" />
     <Folder Include="service" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

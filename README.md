@@ -41,7 +41,20 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 * 📄 `dio.c` — Implementation of pin/port controls ( direction, value, etc... ).
 * 📄 `dio.h` — Pin/Port directions and macro definitions.
 </details>
+<details>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>GIE/</b> (Global Interrupt Enable Driver)</summary>
+
+* 📄 `gie.c` — Implementation of global Interrupt Enable functions.
+* 📄 `gie.h` — global Interrupt Enable functions declarations.
 </details>
+<details>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>EXTI/</b> (External Interrupts Driver)</summary>
+
+* 📄 `exti.c` — Implementation of interrupts control, sense control, call-back functions.
+* 📄 `exti.h` — External interrupts functions declarations and macro definintions.
+</details>
+</details>
+
 
 <details>
 <summary>📂 <b>HAL</b> (Hardware Abstraction Layer)</summary>
@@ -89,7 +102,7 @@ The system is configured to run both optimized **4-Bit Mode** and **8-Bit Mode**
 <details style="margin-top: 5px; margin-bottom: 10px; margin-left: 20px;">
 <summary> IMP! While using 4-bitmode. </summary>
 
-* user inputs the GPIO Pins for :
+* user configures the GPIO Pins for :
     * CLCD_DATA_PIN<code>x<sub>0</sub></code>
     * CLCD_DATA_PIN<code>x<sub>1</sub></code>
     * CLCD_DATA_PIN<code>x<sub>2</sub></code>
@@ -97,7 +110,7 @@ The system is configured to run both optimized **4-Bit Mode** and **8-Bit Mode**
 </details>
 
 * **Control Port:** `CLCD_CTRL_PORTx`
-    * The user inputs the GPIO pins for :
+    * The user configures the GPIO pins for :
         * CLCD_RS_PIN`x`
         * CLCD_RW_PIN`x`
         * CLCD_E_PIN`x`
@@ -110,7 +123,7 @@ The Keypad is a 4x4 Matrix containing 16 buttons
 <details style="margin-top: 5px; margin-bottom: 10px; margin-left: 20px;">
 <summary> Data Port/Ports: <code>KPAD_COL_PORTx</code> & <code>KPAD_ROW_PORTx</code> </summary>
 
-* user inputs the GPIO Pins for :
+* user configures the GPIO Pins for :
     * **KPAD_COL_PORT`x`**
         * KPAD_COL_PIN<code>x<sub>0</sub></code>
         * KPAD_COL_PIN<code>x<sub>1</sub></code>
@@ -154,6 +167,34 @@ void DIO_voidTogPinVal (u8 Copy_u8PortID,u8 Copy_u8PinID);
 void DIO_voidEnablePullUp (u8 Copy_u8PortID,u8 Copy_u8PinID);
 // allows user to set `pin` to pull-up
 ```
+### GIE Subsystem (`gie.h`)
+```c
+void GIE_voidEnableGlobalInterrupt(void);
+//  allows user to enable Global interrupts
+
+void GIE_voidDisableGlobalInterrupt(void);
+//  allows user to disable Global interrupts
+```
+### EXTI Subsystem (`exti.h`)
+```c
+void EXTI_voidEnableInt(u8 Copy_u8Int);
+//  allows user to enable an interrupt pin
+
+void EXTI_voidDisableInt(u8 Copy_u8Int);
+//  allows user to disable an interrupt pin
+
+void EXTI_voidSetSenseControl(u8 Copy_u8Int,u8 Copy_u8SC);
+//  allows user to control what causes an interrupt ex: Falling edge
+
+void EXTI_INT0_CallBack(void(*fun)(void));
+//  allows user to control Interrupt 0 routine
+
+void EXTI_INT1_CallBack(void(*fun)(void));
+//  allows user to control Interrupt 1 routine
+
+void EXTI_INT2_CallBack(void(*fun)(void));
+//  allows user to control Interrupt 2 routine
+```
 
 ### LCD Subsystem (`CLCD_int.h`)
 ```c
@@ -191,8 +232,8 @@ u8 KPAD_u8GetKeyPressed (void);
 ```
 ---
 ## Interactive Showcase
-**Here is the main.c working on Proteus! This example initializes the CLCD and KPAD drivers and continuously reads keypad input, displaying pressed characters on the LCD and clearing the display when the ON/C button ('c') is pressed.**
+**Here is the main.c working on Proteus! This example initializes the CLCD and enables interrupts and reads button inputs, displaying which interrupt was fired on the LCD then clearing the display.**
 
 <p align="center">
-  <img src="./KPAD&CLCD.png" alt="Keypad and CLCD Proteus Simulation" width="700">
+  <img src="./Interrupts.png" alt="Interrupts Proteus Simulation" width="700">
 </p>

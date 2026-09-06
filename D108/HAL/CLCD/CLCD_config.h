@@ -25,7 +25,7 @@
 
 #define CLCD_RS_PIN		DIO_PIN1			//	choose Ctrl RS Pin
 #define CLCD_RW_PIN		DIO_PIN0			//	choose Ctrl RW Pin
-#define CLCD_E_PIN		DIO_PIN2			//	choose Ctrl E  Pin
+#define CLCD_E_PIN		DIO_PIN3			//	choose Ctrl E  Pin
 
 
 
