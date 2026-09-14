@@ -54,10 +54,16 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 * 📄 `exti.h` — External interrupts functions declarations and macro definintions.
 </details>
 <details>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>ADC/</b> (Analogue to digital converter Driver)</summary>
+
+* 📄 `adc.c` — Implementation of Analogue to digital converter functions.
+* 📄 `adc.h` — Analogue to digital converter functions declarations and macro definitions.
+</details>
+<details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>TIMER0/</b> (Timer/Counter 0 Driver)</summary>
 
 * 📄 `timer0.c` — Implementation of Timer0 functions.
-* 📄 `timer0.h` — Timer0 functions directions and macro definitions.
+* 📄 `timer0.h` — Timer0 functions declarations and macro definitions.
 </details>
 </details>
 
@@ -200,6 +206,14 @@ void EXTI_INT1_CallBack(void(*Copy_ptrvoidCallBackFunc)(void));
 
 void EXTI_INT2_CallBack(void(*Copy_ptrvoidCallBackFunc)(void));
 //  allows user to control Interrupt 2 routine
+```
+### ADC Subsystem (`adc.h`)
+```c
+void ADC_voidInit();
+//  initializes the ADC
+
+u16	 ADC_u16ReadValue(u8 Copy_u8Channel);
+//  allows user to read the digital value from the ADC
 ```
 ### Timer0 Subsystem (`timer0.h`)
 ```c
