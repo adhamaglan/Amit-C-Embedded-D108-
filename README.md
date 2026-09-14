@@ -53,6 +53,12 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 * 📄 `exti.c` — Implementation of interrupts control, sense control, call-back functions.
 * 📄 `exti.h` — External interrupts functions declarations and macro definintions.
 </details>
+<details>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>TIMER0/</b> (Timer/Counter 0 Driver)</summary>
+
+* 📄 `timer0.c` — Implementation of Timer0 functions.
+* 📄 `timer0.h` — Timer0 functions directions and macro definitions.
+</details>
 </details>
 
 
@@ -186,16 +192,26 @@ void EXTI_voidDisableInt(u8 Copy_u8Int);
 void EXTI_voidSetSenseControl(u8 Copy_u8Int,u8 Copy_u8SC);
 //  allows user to control what causes an interrupt ex: Falling edge
 
-void EXTI_INT0_CallBack(void(*fun)(void));
+void EXTI_INT0_CallBack(void(*Copy_ptrvoidCallBackFunc)(void));
 //  allows user to control Interrupt 0 routine
 
-void EXTI_INT1_CallBack(void(*fun)(void));
+void EXTI_INT1_CallBack(void(*Copy_ptrvoidCallBackFunc)(void));
 //  allows user to control Interrupt 1 routine
 
-void EXTI_INT2_CallBack(void(*fun)(void));
+void EXTI_INT2_CallBack(void(*Copy_ptrvoidCallBackFunc)(void));
 //  allows user to control Interrupt 2 routine
 ```
+### Timer0 Subsystem (`timer0.h`)
+```c
+void TIMER0_voidInit(u8 Copy_u8Prescaler);
+//  initializes timer0 and allows user to choose the clock pre-scaler
 
+void TIMER0_voidSetPreloadVal(u8 Copy_u8Val);
+//  allows user to preload the timer (count from an offset)
+
+void TIMER0_voidSetCallBackOVF(void (*Copy_ptrvoidCallBackFunc)(void));
+//  allows user to controll timer0 Interrupt routine
+```
 ### LCD Subsystem (`CLCD_int.h`)
 ```c
 void CLCD_voidInit(void);
@@ -219,7 +235,7 @@ void CLCD_voidSetCursorPos (u8 Copy_u8x,u8 Copy_u8y);
 void CLCD_voidClearScreen (void);
 // clears LCD screen
 
-void CLCD_voidSendSpecialChar (u8 Copy_u8Index, const u8 *Copy_u8Arr, u8 Copy_u8x, u8 Copy_u8y);
+void CLCD_voidSendSpecialChar (u8 Copy_u8Index,const u8 *Copy_u8Arr,u8 Copy_u8x,u8 Copy_u8y);
 // allows user to create special characters and store them in CGRAM and send it to LCD
 ```
 ### Keypad Subsystem  (`KPAD_int.h`)
@@ -230,10 +246,3 @@ void KPAD_voidInit (void);
 u8 KPAD_u8GetKeyPressed (void);
 // allows the user to get the pressed key
 ```
----
-## Interactive Showcase
-**Here is the main.c working on Proteus! This example initializes the CLCD and enables interrupts and reads button inputs, displaying which interrupt was fired on the LCD then clearing the display.**
-
-<p align="center">
-  <img src="./Interrupts.png" alt="Interrupts Proteus Simulation" width="700">
-</p>

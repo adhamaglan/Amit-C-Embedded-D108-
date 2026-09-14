@@ -172,6 +172,12 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\ADC\adc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\ADC\adc.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MCAL\DIO\dio.c">
       <SubType>compile</SubType>
     </Compile>
@@ -193,6 +199,12 @@
     <Compile Include="MCAL\regdef.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\TIMER0\timer0.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER0\timer0.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="service\bit_math.h">
       <SubType>compile</SubType>
     </Compile>
@@ -208,6 +220,8 @@
     <Folder Include="MCAL\DIO" />
     <Folder Include="MCAL\GIE" />
     <Folder Include="MCAL\EXTI" />
+    <Folder Include="MCAL\ADC" />
+    <Folder Include="MCAL\TIMER0" />
     <Folder Include="service" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

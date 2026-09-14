@@ -129,9 +129,9 @@ void EXTI_voidSetSenseControl(u8 Copy_u8Int,u8 Copy_u8SC)
 
 
 
-void EXTI_INT0_CallBack(void(*fun)(void))
+void EXTI_INT0_CallBack(void(*Copy_ptrvoidCallBackFunc)(void))
 {
-	INT0_ptr=fun;
+	INT0_ptr=Copy_ptrvoidCallBackFunc;
 }
 void __vector_1() __attribute__((signal));
 void __vector_1()
@@ -143,9 +143,9 @@ void __vector_1()
 }
 
 
-void EXTI_INT1_CallBack(void(*fun)(void))
+void EXTI_INT1_CallBack(void(*Copy_ptrvoidCallBackFunc)(void))
 {
-	INT1_ptr=fun;
+	INT1_ptr=Copy_ptrvoidCallBackFunc;
 }
 void __vector_2() __attribute__((signal));
 void __vector_2()
@@ -157,9 +157,9 @@ void __vector_2()
 }
 
 
-void EXTI_INT2_CallBack(void(*fun)(void))
+void EXTI_INT2_CallBack(void(*Copy_ptrvoidCallBackFunc)(void))
 {
-	INT2_ptr=fun;
+	INT2_ptr=Copy_ptrvoidCallBackFunc;
 }
 void __vector_3() __attribute__((signal));
 void __vector_3()
