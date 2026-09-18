@@ -18,10 +18,16 @@
 #define TIMER0_EXT_FALLING		6
 #define TIMER0_EXT_RISING		7
 
+#define TIMER0_NORMAL			0
+#define TIMER0_CTC				1
+#define TIMER0_PWM				2
+#define TIMER0_FAST_PWM			3
 
 
-void TIMER0_voidInit(u8 Copy_u8Prescaler);
+void TIMER0_voidInit(u8 Copy_u8Prescaler, u8 Copy_u8Mode);
 void TIMER0_voidSetPreloadVal(u8 Copy_u8Val);
+void TIMER0_voidSetOCRVal(u8 Copy_u8Val);
+void TIMER0_voidSetCallBackOCR(void (*Copy_ptrvoidCallBackFunc)(void));
 void TIMER0_voidSetCallBackOVF(void (*Copy_ptrvoidCallBackFunc)(void));
 
 

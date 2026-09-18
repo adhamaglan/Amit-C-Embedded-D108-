@@ -209,7 +209,7 @@ void EXTI_INT2_CallBack(void(*Copy_ptrvoidCallBackFunc)(void));
 ```
 ### ADC Subsystem (`adc.h`)
 ```c
-void ADC_voidInit();
+void ADC_voidInit(void);
 //  initializes the ADC
 
 u16	 ADC_u16ReadValue(u8 Copy_u8Channel);

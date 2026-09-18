@@ -18,11 +18,24 @@
 #include "MCAL/ADC/adc.h"
 #include "MCAL/TIMER0/timer0.h"
 
-
+//	blinking led every 1 second
+void TogPin()
+{
+	static u8 counter=0;
+	counter++;
+	if(counter==125){
+		DIO_voidTogPinVal(DIO_PORTB,DIO_PIN4);
+		counter=0;
+	}
+}
 
 int main(void)
 {
-	
+	DIO_voidSetPinDir(DIO_PORTB,DIO_PIN4,DIO_PIN_OUTPUT);
+	TIMER0_voidInit(TIMER0_DIV_BY_1024,TIMER0_CTC);
+	TIMER0_voidSetOCRVal(124);
+	GIE_voidEnableGlobalInterrupt();
+	TIMER0_voidSetCallBackOCR(TogPin);
 	while (1)
 	{
 		
