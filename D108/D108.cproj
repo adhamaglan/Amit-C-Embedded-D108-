@@ -205,6 +205,12 @@
     <Compile Include="MCAL\TIMER0\timer0.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\TIMER0\timer0_cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER0\timer0_priv.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="service\bit_math.h">
       <SubType>compile</SubType>
     </Compile>

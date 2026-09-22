@@ -51,7 +51,7 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>EXTI/</b> (External Interrupts Driver)</summary>
 
 * 📄 `exti.c` — Implementation of interrupts control, sense control, call-back functions.
-* 📄 `exti.h` — External interrupts functions declarations and macro definintions.
+* 📄 `exti.h` — External interrupts functions declarations and macro definitions.
 </details>
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>ADC/</b> (Analogue to digital converter Driver)</summary>
@@ -64,6 +64,8 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 
 * 📄 `timer0.c` — Implementation of Timer0 functions.
 * 📄 `timer0.h` — Timer0 functions declarations and macro definitions.
+* 📄 `timer0_cfg.h` — Timer0 Modes configurations.
+* 📄 `timer0_priv.h` — Timer0 private macros.
 </details>
 </details>
 
@@ -76,7 +78,7 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 
 * 📄 `CLCD_config.h` — Interface pin routing layout.
 * 📄 `CLCD_int.h` — Character LCD Functions declarations.
-* 📄 `CLCD_priv.h` — Private operational bits.
+* 📄 `CLCD_priv.h` — Private macros.
 * 📄 `CLCD_prog.c` — Character LCD Functions implementations.
 </details>
 
@@ -112,7 +114,7 @@ The system is configured to run both optimized **4-Bit Mode** and **8-Bit Mode**
     * 4-Bit Mode -> `CLCD_4_BITS`
 * **Data Port:** `CLCD_DATA_PORTx`
 <details style="margin-top: 5px; margin-bottom: 10px; margin-left: 20px;">
-<summary> IMP! While using 4-bitmode. </summary>
+<summary> IMP! While using 4-bit mode. </summary>
 
 * user configures the GPIO Pins for :
     * CLCD_DATA_PIN<code>x<sub>0</sub></code>
@@ -217,14 +219,23 @@ u16	 ADC_u16ReadValue(u8 Copy_u8Channel);
 ```
 ### Timer0 Subsystem (`timer0.h`)
 ```c
-void TIMER0_voidInit(u8 Copy_u8Prescaler);
-//  initializes timer0 and allows user to choose the clock pre-scaler
+void TIMER0_voidInit(u8 Copy_u8Prescaler, u8 Copy_u8Mode);
+//  initializes timer0 and allows user to choose the clock pre-scaler and Mode
 
 void TIMER0_voidSetPreloadVal(u8 Copy_u8Val);
 //  allows user to preload the timer (count from an offset)
 
+void TIMER0_voidSetOCRVal(u8 Copy_u8Val);
+//  allows user to set the OCR0 value
+
+void TIMER0_voidSetDutyCycle(u8 Copy_u8DutyCycle);
+//  allows the user to set the pulse duty cycle
+
+void TIMER0_voidSetCallBackOCR(void (*Copy_ptrvoidCallBackFunc)(void));
+//  allows user to control timer0 (output compare) Interrupt routine
+
 void TIMER0_voidSetCallBackOVF(void (*Copy_ptrvoidCallBackFunc)(void));
-//  allows user to controll timer0 Interrupt routine
+//  allows user to control timer0 (overflow) Interrupt routine
 ```
 ### LCD Subsystem (`CLCD_int.h`)
 ```c

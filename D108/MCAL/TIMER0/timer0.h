@@ -27,6 +27,7 @@
 void TIMER0_voidInit(u8 Copy_u8Prescaler, u8 Copy_u8Mode);
 void TIMER0_voidSetPreloadVal(u8 Copy_u8Val);
 void TIMER0_voidSetOCRVal(u8 Copy_u8Val);
+void TIMER0_voidSetDutyCycle(u8 Copy_u8DutyCycle); // takes duty cycle percentage 
 void TIMER0_voidSetCallBackOCR(void (*Copy_ptrvoidCallBackFunc)(void));
 void TIMER0_voidSetCallBackOVF(void (*Copy_ptrvoidCallBackFunc)(void));
 

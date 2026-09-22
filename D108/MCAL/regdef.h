@@ -17,7 +17,11 @@
 
 //	Timer Interrupt Registers
 #define TIMSK_REG   *((volatile u8*)(0x59))		// Interrupt Mask Register (Enables Timer Interrupts)
+#define TIMSK_TOIE0 0							// Timer0 Overflow Interrupt Enable Bit
+#define TIMSK_OCIE0 1							// Timer0 OCR Interrupt Enable Bit
 #define TIFR_REG    *((volatile u8*)(0x58))		// Interrupt Flag Register (gets cleared automatically if GIE and TIMSK are enabled)
+#define TIFR_TOV0   0							// Timer0 Overflow Flag Bit
+#define TIFR_OCF0   1							// Timer0 OCR Flag Bit
 // ---------------------------------------
 
 //	External interrupt registers
@@ -76,15 +80,14 @@
 // ---------------------------------------
 
 //	Timer 0 registers
-#define TCCR0_REG	*((volatile u8*)(0x53))			// Timer/Counter Control Register
-#define TCNT0_REG	*((volatile u8*)(0x52))			// Timer/Counter Register
-#define OCR0_REG	*((volatile u8*)(0x5C))			// Output Compare Register
-#define TCCR0_WGM01 3
-#define TCCR0_WGM00 6
-#define TIMSK_TOIE0 0								// Timer0 Overflow Interrupt Enable Bit
-#define TIMSK_OCIE0 1								// Timer0 OCR Interrupt Enable Bit
-#define TIFR_TOV0   0								// Timer0 Overflow Flag Bit
-#define TIFR_OCF0   1								// Timer0 OCR Flag Bit
+#define TCCR0_REG	*((volatile u8*)(0x53))		//	Timer/Counter Control Register
+#define TCCR0_COM00 4							//	Timer0 Compare Output Mode 00
+#define	TCCR0_COM01 5							//	Timer0 Compare Output Mode 01
+#define TCCR0_WGM01 3							//	Timer0 Waveform generation mode 01
+#define TCCR0_WGM00 6							//	Timer0 Waveform generation mode 00
+#define	TCCR0_FOC0  7							//	Timer0 Force Output Compare
+#define TCNT0_REG	*((volatile u8*)(0x52))		//	Timer/Counter Register
+#define OCR0_REG	*((volatile u8*)(0x5C))		//	Output Compare Register
 // ---------------------------------------
 
 
