@@ -199,6 +199,12 @@
     <Compile Include="MCAL\regdef.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\SPI\spi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI\spi.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MCAL\TIMER0\timer0.c">
       <SubType>compile</SubType>
     </Compile>
@@ -209,6 +215,24 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\TIMER0\timer0_priv.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TWI\twi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TWI\twi.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TWI\twi_cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TWI\twi_priv.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\USART\usart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\USART\usart.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="service\bit_math.h">
@@ -227,6 +251,9 @@
     <Folder Include="MCAL\GIE" />
     <Folder Include="MCAL\EXTI" />
     <Folder Include="MCAL\ADC" />
+    <Folder Include="MCAL\TWI" />
+    <Folder Include="MCAL\SPI" />
+    <Folder Include="MCAL\USART" />
     <Folder Include="MCAL\TIMER0" />
     <Folder Include="service" />
   </ItemGroup>

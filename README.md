@@ -67,6 +67,26 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 * 📄 `timer0_cfg.h` — Timer0 Modes configurations.
 * 📄 `timer0_priv.h` — Timer0 private macros.
 </details>
+<details>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>USART/</b> (Universal Synchronous/Asynchronous Receiver/Transmitter Driver)</summary>
+
+* 📄 `usart.c` — Implementation of usart functions.
+* 📄 `usart.h` — usart functions declarations.
+</details>
+<details>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>SPI/</b> (Serial Peripheral Interface Driver)</summary>
+
+* 📄 `spi.c` — Implementation of spi functions.
+* 📄 `spi.h` — spi functions declarations and macro definitions.
+</details>
+<details>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>TWI (I2C)/</b> (Two-Wire Interface Driver)</summary>
+
+* 📄 `twi.c` — Implementation of twi functions.
+* 📄 `twi.h` — twi functions declarations and error status enum.
+* 📄 `twi_cfg.h` — twi frequency and clock configurations.
+* 📄 `twi_priv.h` — twi private macros.
+</details>
 </details>
 
 
@@ -78,7 +98,6 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 
 * 📄 `CLCD_config.h` — Interface pin routing layout.
 * 📄 `CLCD_int.h` — Character LCD Functions declarations.
-* 📄 `CLCD_priv.h` — Private macros.
 * 📄 `CLCD_prog.c` — Character LCD Functions implementations.
 </details>
 
@@ -155,7 +174,7 @@ The Keypad is a 4x4 Matrix containing 16 buttons
 
 ## 📌 API Reference
 
-### DIO Subsystem (`dio.h`)
+### DIO Driver (`dio.h`)
 ```c
 void DIO_voidSetPinDir (u8 Copy_u8PortID, u8 Copy_u8PinID, u8 Copy_u8Dir); 
 // allows user to set `pin` to input/output
@@ -181,7 +200,7 @@ void DIO_voidTogPinVal (u8 Copy_u8PortID,u8 Copy_u8PinID);
 void DIO_voidEnablePullUp (u8 Copy_u8PortID,u8 Copy_u8PinID);
 // allows user to set `pin` to pull-up
 ```
-### GIE Subsystem (`gie.h`)
+### GIE Driver (`gie.h`)
 ```c
 void GIE_voidEnableGlobalInterrupt(void);
 //  allows user to enable Global interrupts
@@ -189,7 +208,7 @@ void GIE_voidEnableGlobalInterrupt(void);
 void GIE_voidDisableGlobalInterrupt(void);
 //  allows user to disable Global interrupts
 ```
-### EXTI Subsystem (`exti.h`)
+### EXTI Driver (`exti.h`)
 ```c
 void EXTI_voidEnableInt(u8 Copy_u8Int);
 //  allows user to enable an interrupt pin
@@ -209,7 +228,7 @@ void EXTI_INT1_CallBack(void(*Copy_ptrvoidCallBackFunc)(void));
 void EXTI_INT2_CallBack(void(*Copy_ptrvoidCallBackFunc)(void));
 //  allows user to control Interrupt 2 routine
 ```
-### ADC Subsystem (`adc.h`)
+### ADC Driver (`adc.h`)
 ```c
 void ADC_voidInit(void);
 //  initializes the ADC
@@ -217,7 +236,7 @@ void ADC_voidInit(void);
 u16	 ADC_u16ReadValue(u8 Copy_u8Channel);
 //  allows user to read the digital value from the ADC
 ```
-### Timer0 Subsystem (`timer0.h`)
+### Timer0 Driver (`timer0.h`)
 ```c
 void TIMER0_voidInit(u8 Copy_u8Prescaler, u8 Copy_u8Mode);
 //  initializes timer0 and allows user to choose the clock pre-scaler and Mode
@@ -236,6 +255,69 @@ void TIMER0_voidSetCallBackOCR(void (*Copy_ptrvoidCallBackFunc)(void));
 
 void TIMER0_voidSetCallBackOVF(void (*Copy_ptrvoidCallBackFunc)(void));
 //  allows user to control timer0 (overflow) Interrupt routine
+```
+### USART/UART Driver (`usart.h`)
+```c
+void UART_voidInit(void);
+//  initializes USART/UART
+
+void UART_voidSend(u8 Copy_u8data);
+//  allows user to send data
+
+u8	 UART_u8Receive(void);
+//  allows user to receive data
+
+void UART_voidSendString(const u8 *Copy_u8Str);
+// allows user to send a string
+```
+### SPI Driver (`spi.h`)
+```c
+void SPI_voidMasterInit(void);
+//  initializes SPI Master
+
+u8	 SPI_u8MasterSend(u8 Copy_u8data);
+//  allows user to send/receive data as Master
+
+void SPI_voidSlaveInit(void);
+//  initializes SPI Slave
+
+u8	 SPI_u8SlaveSend(u8 Copy_u8data);
+//  allows user to send/receive data as Slave
+```
+### TWI/I2C Driver (`twi.h`)
+```c
+void TWI_MasterInit(void);
+//  initializes TWI/I2C Master
+
+u8 TWI_u8SendStartCondition(void);
+//  allows user to send start contidtion
+
+u8 TWI_u8SendRepStartCondition(void);
+//  allows user to send repeated start contidtion
+
+u8 TWI_u8SendStopCondition(void);
+//  allows user to send stop contidtion
+
+u8 TWI_u8MasterSendSlaveAddWithRead(u8 Copy_u8SLA);
+//  allows user to send the slave address and read bit
+
+u8 TWI_u8MasterSendSlaveAddWithWrite(u8 Copy_u8SLA);
+//  allows user to send the slave address and write bit
+
+u8 TWI_u8MasterSendData(u8 Copy_u8Data);
+//  allows user to send data as Master
+
+u8 TWI_u8MasterReceiveData(u8* Copy_u8Data);
+//  allows user to receive data as Master
+
+void TWI_SlaveInit(void);
+//  initializes TWI/I2C Slave
+
+u8 TWI_u8SlaveSendData(u8 Copy_u8Data);
+//  allows user to send data as Slave
+
+u8 TWI_u8SlaveReceiveData(u8* Copy_u8Data);
+//  allows user to receive data as Slave
 ```
 ### LCD Subsystem (`CLCD_int.h`)
 ```c

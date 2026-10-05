@@ -28,10 +28,10 @@ void static sendEnablePulse(void)
 #if CLCD_TYPE == CLCD_4_BITS
 static void setHalfPort(u8 data)
 {
-		DIO_voidSetPinVal(CLCD_DATA_PORT,CLCD_DATA_PIN0, GET_BIT(data, 0));
-		DIO_voidSetPinVal(CLCD_DATA_PORT,CLCD_DATA_PIN1, GET_BIT(data, 1));
-		DIO_voidSetPinVal(CLCD_DATA_PORT,CLCD_DATA_PIN2, GET_BIT(data, 2));
-		DIO_voidSetPinVal(CLCD_DATA_PORT,CLCD_DATA_PIN3, GET_BIT(data, 3));
+	DIO_voidSetPinVal(CLCD_DATA_PORT,CLCD_DATA_PIN0, GET_BIT(data, 0));
+	DIO_voidSetPinVal(CLCD_DATA_PORT,CLCD_DATA_PIN1, GET_BIT(data, 1));
+	DIO_voidSetPinVal(CLCD_DATA_PORT,CLCD_DATA_PIN2, GET_BIT(data, 2));
+	DIO_voidSetPinVal(CLCD_DATA_PORT,CLCD_DATA_PIN3, GET_BIT(data, 3));
 }
 #endif
 
@@ -39,36 +39,36 @@ static void setHalfPort(u8 data)
 
 void CLCD_voidInit(void)
 {
-		DIO_voidSetPinDir(CLCD_CTRL_PORT,CLCD_RS_PIN,DIO_PIN_OUTPUT);
-		DIO_voidSetPinDir(CLCD_CTRL_PORT,CLCD_RW_PIN,DIO_PIN_OUTPUT);
-		DIO_voidSetPinDir(CLCD_CTRL_PORT,CLCD_E_PIN,DIO_PIN_OUTPUT);
-		#if CLCD_TYPE == CLCD_8_BITS
-		DIO_voidSetPortDir(CLCD_DATA_PORT,DIO_PORT_OUTPUT);
-		#elif CLCD_TYPE == CLCD_4_BITS
-		DIO_voidSetPinDir(CLCD_DATA_PORT,CLCD_DATA_PIN0,DIO_PIN_OUTPUT);
-		DIO_voidSetPinDir(CLCD_DATA_PORT,CLCD_DATA_PIN1,DIO_PIN_OUTPUT);
-		DIO_voidSetPinDir(CLCD_DATA_PORT,CLCD_DATA_PIN2,DIO_PIN_OUTPUT);
-		DIO_voidSetPinDir(CLCD_DATA_PORT,CLCD_DATA_PIN3,DIO_PIN_OUTPUT);
-		#else
-		#warning "Wrong CLCD Type Choice"
-		#endif
-		_delay_ms(40);
-		#if CLCD_TYPE == CLCD_8_BITS
-		// Function Set: 8-bit mode, 2 lines display, 5x7 font matrix 
-		CLCD_voidSendInst(0x38);
-		#elif CLCD_TYPE == CLCD_4_BITS
-		// Function Set: 4-bit mode, 2 lines display, 5x7 font matrix 
-		setHalfPort(0x02);
-		sendEnablePulse();
-		setHalfPort(0x02);
-		sendEnablePulse();
-		setHalfPort(0x08);
-		sendEnablePulse();
-		#endif
-		// Display ON/OFF: Display ON, Cursor OFF, Blink OFF 
-		CLCD_voidSendInst(0x0C);
-		// Clear Display 
-		CLCD_voidSendInst(0x01);
+	DIO_voidSetPinDir(CLCD_CTRL_PORT,CLCD_RS_PIN,DIO_PIN_OUTPUT);
+	DIO_voidSetPinDir(CLCD_CTRL_PORT,CLCD_RW_PIN,DIO_PIN_OUTPUT);
+	DIO_voidSetPinDir(CLCD_CTRL_PORT,CLCD_E_PIN,DIO_PIN_OUTPUT);
+#if CLCD_TYPE == CLCD_8_BITS
+	DIO_voidSetPortDir(CLCD_DATA_PORT,DIO_PORT_OUTPUT);
+#elif CLCD_TYPE == CLCD_4_BITS
+	DIO_voidSetPinDir(CLCD_DATA_PORT,CLCD_DATA_PIN0,DIO_PIN_OUTPUT);
+	DIO_voidSetPinDir(CLCD_DATA_PORT,CLCD_DATA_PIN1,DIO_PIN_OUTPUT);
+	DIO_voidSetPinDir(CLCD_DATA_PORT,CLCD_DATA_PIN2,DIO_PIN_OUTPUT);
+	DIO_voidSetPinDir(CLCD_DATA_PORT,CLCD_DATA_PIN3,DIO_PIN_OUTPUT);
+#else
+	#warning "Wrong CLCD Type Choice"
+#endif
+	_delay_ms(40);
+#if CLCD_TYPE == CLCD_8_BITS
+	// Function Set: 8-bit mode, 2 lines display, 5x7 font matrix 
+	CLCD_voidSendInst(0x38);
+#elif CLCD_TYPE == CLCD_4_BITS
+	// Function Set: 4-bit mode, 2 lines display, 5x7 font matrix 
+	setHalfPort(0x02);
+	sendEnablePulse();
+	setHalfPort(0x02);
+	sendEnablePulse();
+	setHalfPort(0x08);
+	sendEnablePulse();
+#endif
+	// Display ON/OFF: Display ON, Cursor OFF, Blink OFF 
+	CLCD_voidSendInst(0x0C);
+	// Clear Display 
+	CLCD_voidSendInst(0x01);
 }
 
 
@@ -78,12 +78,12 @@ void CLCD_voidSendData(u8 Copy_u8Data)
 	// Data mode
 	DIO_voidSetPinVal(CLCD_CTRL_PORT, CLCD_RS_PIN, DIO_PIN_HIGH);
 	DIO_voidSetPinVal(CLCD_CTRL_PORT, CLCD_RW_PIN, DIO_PIN_LOW);
-	#if CLCD_TYPE == CLCD_8_BITS
+#if CLCD_TYPE == CLCD_8_BITS
 	// send data
 	DIO_voidSetPortVal (CLCD_DATA_PORT,Copy_u8Data);
 	// pulse
 	sendEnablePulse();
-	#elif CLCD_TYPE == CLCD_4_BITS
+#elif CLCD_TYPE == CLCD_4_BITS
 	// send High nibble data
 	setHalfPort(Copy_u8Data >> 4); 
 	// pulse
@@ -92,9 +92,9 @@ void CLCD_voidSendData(u8 Copy_u8Data)
 	setHalfPort(Copy_u8Data & 0x0f);
 	// pulse
 	sendEnablePulse();
-	#else
+#else
 	#warning "Wrong CLCD Type Choice"
-	#endif	
+#endif	
 }
 
 
@@ -104,12 +104,12 @@ void CLCD_voidSendInst(u8 Copy_u8Data)
 	// Instruction mode
 	DIO_voidSetPinVal(CLCD_CTRL_PORT, CLCD_RS_PIN, DIO_PIN_LOW);
 	DIO_voidSetPinVal(CLCD_CTRL_PORT, CLCD_RW_PIN, DIO_PIN_LOW);
-	#if CLCD_TYPE == CLCD_8_BITS
+#if CLCD_TYPE == CLCD_8_BITS
 	// send instruction
 	DIO_voidSetPortVal (CLCD_DATA_PORT,Copy_u8Data);
 	// pulse
 	sendEnablePulse();
-	#elif CLCD_TYPE == CLCD_4_BITS
+#elif CLCD_TYPE == CLCD_4_BITS
 	// send High nibble instruction
 	setHalfPort(Copy_u8Data >> 4);
 	// pulse
@@ -118,9 +118,9 @@ void CLCD_voidSendInst(u8 Copy_u8Data)
 	setHalfPort(Copy_u8Data & 0x0f);
 	// pulse
 	sendEnablePulse();
-	#else
+#else
 	#warning "Wrong CLCD Type Choice"
-	#endif
+#endif
 }
 
 
