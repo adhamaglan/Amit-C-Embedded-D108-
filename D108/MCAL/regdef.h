@@ -76,7 +76,7 @@
 #define ADCSRA_ADEN	 7
 #define ADCH_REG	*((volatile u8*)(0x25))
 #define ADCL_REG	*((volatile u8*)(0x24))
-#define ADC_REG		*((volatile u8*)(0x24))
+#define ADC_REG		*((volatile u16*)(0x24))
 // ---------------------------------------
 
 //	Timer 0 registers
