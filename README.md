@@ -192,7 +192,7 @@ The Keypad is a 4x4 Matrix containing 16 buttons
 
 
 
-## 📌 API Reference
+## 📌 API Reference (MCAL)
 
 ### DIO Driver (`dio.h`)
 ```c
@@ -284,7 +284,7 @@ void UART_voidInit(void);
 void UART_voidSend(u8 Copy_u8data);
 //  allows user to send data
 
-u8  UART_u8Receive(void);
+u8 UART_u8Receive(void);
 //  allows user to receive data
 
 void UART_voidSendString(const u8 *Copy_u8Str);
@@ -295,13 +295,13 @@ void UART_voidSendString(const u8 *Copy_u8Str);
 void SPI_voidMasterInit(void);
 //  initializes SPI Master
 
-u8  SPI_u8MasterSend(u8 Copy_u8data);
+u8 SPI_u8MasterSend(u8 Copy_u8data);
 //  allows user to send/receive data as Master
 
 void SPI_voidSlaveInit(void);
 //  initializes SPI Slave
 
-u8  SPI_u8SlaveSend(u8 Copy_u8data);
+u8 SPI_u8SlaveSend(u8 Copy_u8data);
 //  allows user to send/receive data as Slave
 ```
 ### TWI/I2C Driver (`twi.h`)
@@ -339,6 +339,15 @@ u8 TWI_u8SlaveSendData(u8 Copy_u8Data);
 u8 TWI_u8SlaveReceiveData(u8* Copy_u8Data);
 //  allows user to receive data as Slave
 ```
+### EEPROM (`eeprom.h`)
+```c
+void EEPROM_voidWriteDataByte(u16 Copy_u16adress, u8 Copy_u8data);
+// allows user to send (store) data in the internal EEPROM
+
+u8 EEPROM_voidReadDataByte(u16 Copy_u16adress);
+// allows user to Read data in the internal EEPROM
+```
+## 📌 API Reference (HAL)
 ### LCD Subsystem (`CLCD_int.h`)
 ```c
 void CLCD_voidInit(void);
@@ -365,11 +374,19 @@ void CLCD_voidClearScreen (void);
 void CLCD_voidSendSpecialChar (u8 Copy_u8Index,const u8 *Copy_u8Arr,u8 Copy_u8x,u8 Copy_u8y);
 // allows user to create special characters and store them in CGRAM and send it to LCD
 ```
-### Keypad Subsystem  (`KPAD_int.h`)
+### Keypad Subsystem (`KPAD_int.h`)
 ```c
 void KPAD_voidInit (void);
 // initializes the Keypad
 
 u8 KPAD_u8GetKeyPressed (void);
 // allows the user to get the pressed key
+```
+### EEPROM_EXT (`eeprom_ext.h`)
+```c
+void EEPROM_EXT_voidSendDataByte(u16 Copy_u16LocationAddress, u8 Copy_u8DataByte);
+// allows user to send (store) data in the external EEPROM
+
+u8 EEPROM_EXT_u8ReadDataByte(u16 Copy_u16LocationAddress);
+// allows user to Read data in the external EEPROM
 ```
