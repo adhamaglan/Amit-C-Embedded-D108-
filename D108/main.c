@@ -17,12 +17,20 @@
 #include "MCAL/GIE/gie.h"
 #include "MCAL/ADC/adc.h"
 #include "MCAL/TIMER0/timer0.h"
-#include "MCAL/UART/uart.h"
+#include "MCAL/USART/usart.h"
 #include "MCAL/SPI/spi.h"
 #include "MCAL/TWI/twi.h"
+#include "MCAL/EEPROM/eeprom.h"
+#include "HAL/EEPROM_EXT/eeprom_ext.h"
+u8 data;
 
 int main(void)
 {
+	EEPROM_voidWriteDataByte(1890,'G');
+	data = EEPROM_voidReadDataByte(1890);
+	CLCD_voidInit();
+	CLCD_voidClearScreen();
+	CLCD_voidSendData(data);
 	while (1)
 	{
 	}

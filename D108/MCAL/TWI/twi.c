@@ -137,7 +137,7 @@ u8 TWI_u8MasterSendData(u8 Copy_u8Data)
 
 
 
-u8 TWI_u8MasterReceiveData(u8* Copy_u8Data)
+u8 TWI_u8MasterReceiveDataWithACK(u8* Copy_u8Data)
 {
 	u8 Local_u8ErrStatus = NoError;
 	if (Copy_u8Data != NULL)
@@ -161,6 +161,30 @@ u8 TWI_u8MasterReceiveData(u8* Copy_u8Data)
 
 
 
+u8 TWI_u8MasterReceiveDataWithNACK(u8* Copy_u8Data)
+{
+	u8 Local_u8ErrStatus = NoError;
+	if (Copy_u8Data != NULL)
+	{
+		// Clear TWINT flag, enable TWI
+		TWCR_REG = (1U << TWCR_TWINT) | (1U << TWCR_TWEN);
+		// Wait until TWINT flag is set
+		while (GET_BIT(TWCR_REG, TWCR_TWINT) == 0U);
+		// check the operation status
+		if ((TWSR_REG & 0xF8) != MSTR_RD_BYTE_WITH_NACK)
+		{
+			Local_u8ErrStatus = MasterReadByteErr;
+		}
+		else
+		{
+			*Copy_u8Data = TWDR_REG;
+		}
+	}
+	return Local_u8ErrStatus;
+}
+
+
+
 void TWI_SlaveInit(u8 Copy_u8SLA)
 {
 	// Set the Slave Address in TWAR register (Bits 7 --> 1)
@@ -171,7 +195,7 @@ void TWI_SlaveInit(u8 Copy_u8SLA)
 
 
 
-u8 TWI_u8SlaveSendData(u8 Copy_u8Data)
+u8 TWI_u8SlaveSendDataByte(u8 Copy_u8Data)
 {
 	u8 Local_u8ErrStatus = NoError;
 	// Clear TWINT flag, enable TWI, and set TWEA to send ACK to listen on the bus
@@ -202,7 +226,7 @@ u8 TWI_u8SlaveSendData(u8 Copy_u8Data)
 
 
 
-u8 TWI_u8SlaveReceiveData(u8* Copy_u8Data)
+u8 TWI_u8SlaveReceiveDataByte(u8* Copy_u8Data)
 {
 	u8 Local_u8ErrStatus = NoError;
 	if (Copy_u8Data != NULL)

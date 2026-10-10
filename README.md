@@ -41,24 +41,28 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 * 📄 `dio.c` — Implementation of pin/port controls ( direction, value, etc... ).
 * 📄 `dio.h` — Pin/Port directions and macro definitions.
 </details>
+
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>GIE/</b> (Global Interrupt Enable Driver)</summary>
 
 * 📄 `gie.c` — Implementation of global Interrupt Enable functions.
 * 📄 `gie.h` — global Interrupt Enable functions declarations.
 </details>
+
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>EXTI/</b> (External Interrupts Driver)</summary>
 
 * 📄 `exti.c` — Implementation of interrupts control, sense control, call-back functions.
 * 📄 `exti.h` — External interrupts functions declarations and macro definitions.
 </details>
+
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>ADC/</b> (Analogue to digital converter Driver)</summary>
 
 * 📄 `adc.c` — Implementation of Analogue to digital converter functions.
 * 📄 `adc.h` — Analogue to digital converter functions declarations and macro definitions.
 </details>
+
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>TIMER0/</b> (Timer/Counter 0 Driver)</summary>
 
@@ -67,18 +71,21 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 * 📄 `timer0_cfg.h` — Timer0 Modes configurations.
 * 📄 `timer0_priv.h` — Timer0 private macros.
 </details>
+
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>USART/</b> (Universal Synchronous/Asynchronous Receiver/Transmitter Driver)</summary>
 
 * 📄 `usart.c` — Implementation of usart functions.
 * 📄 `usart.h` — usart functions declarations.
 </details>
+
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>SPI/</b> (Serial Peripheral Interface Driver)</summary>
 
 * 📄 `spi.c` — Implementation of spi functions.
 * 📄 `spi.h` — spi functions declarations and macro definitions.
 </details>
+
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>TWI (I2C)/</b> (Two-Wire Interface Driver)</summary>
 
@@ -86,6 +93,13 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 * 📄 `twi.h` — twi functions declarations and error status enum.
 * 📄 `twi_cfg.h` — twi frequency and clock configurations.
 * 📄 `twi_priv.h` — twi private macros.
+</details>
+
+<details>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>EEPROM/</b> (Electrically Erasable Programmable Read-Only Memory [Internal])</summary>
+
+* 📄 `eeprom.c` — Implementation of eeprom functions.
+* 📄 `eeprom.h` — eeprom functions declarations.
 </details>
 </details>
 
@@ -108,6 +122,12 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 * 📄 `KPAD_int.h` — Matrix keypad Functions declarations.
 * 📄 `KPAD_priv.h` — Row/column matrix key numbers/definitions.
 * 📄 `KPAD_prog.c` — Matrix keypad Functions implementations.
+</details>
+<details>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>EEPROM_EXT/</b> (Electrically Erasable Programmable Read-Only Memory [External])</summary>
+
+* 📄 `eeprom_ext.c` — Implementation of eeprom functions.
+* 📄 `eeprom_ext.h` — eeprom functions declarations.
 </details>
 </details>
 
@@ -264,7 +284,7 @@ void UART_voidInit(void);
 void UART_voidSend(u8 Copy_u8data);
 //  allows user to send data
 
-u8	 UART_u8Receive(void);
+u8  UART_u8Receive(void);
 //  allows user to receive data
 
 void UART_voidSendString(const u8 *Copy_u8Str);
@@ -275,13 +295,13 @@ void UART_voidSendString(const u8 *Copy_u8Str);
 void SPI_voidMasterInit(void);
 //  initializes SPI Master
 
-u8	 SPI_u8MasterSend(u8 Copy_u8data);
+u8  SPI_u8MasterSend(u8 Copy_u8data);
 //  allows user to send/receive data as Master
 
 void SPI_voidSlaveInit(void);
 //  initializes SPI Slave
 
-u8	 SPI_u8SlaveSend(u8 Copy_u8data);
+u8  SPI_u8SlaveSend(u8 Copy_u8data);
 //  allows user to send/receive data as Slave
 ```
 ### TWI/I2C Driver (`twi.h`)

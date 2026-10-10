@@ -160,6 +160,12 @@
     <Compile Include="HAL\CLCD\CLCD_prog.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\EEPROM_EXT\eeprom_ext.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\EEPROM_EXT\eeprom_ext.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\KPAD\KPAD_config.h">
       <SubType>compile</SubType>
     </Compile>
@@ -182,6 +188,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\DIO\dio.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\EEPROM\eeprom.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\EEPROM\eeprom.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\EXTI\exti.c">
@@ -245,12 +257,14 @@
   <ItemGroup>
     <Folder Include="HAL\CLCD" />
     <Folder Include="HAL\KPAD" />
+    <Folder Include="HAL\EEPROM_EXT" />
     <Folder Include="MCAL" />
     <Folder Include="HAL" />
     <Folder Include="MCAL\DIO" />
     <Folder Include="MCAL\GIE" />
     <Folder Include="MCAL\EXTI" />
     <Folder Include="MCAL\ADC" />
+    <Folder Include="MCAL\EEPROM" />
     <Folder Include="MCAL\TWI" />
     <Folder Include="MCAL\SPI" />
     <Folder Include="MCAL\USART" />
