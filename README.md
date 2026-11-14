@@ -73,6 +73,15 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 </details>
 
 <details>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>TIMER1/</b> (Timer/Counter 1 Driver)</summary>
+
+* 📄 **`timer1.c`** — Implementation of Timer1 functions.
+* 📄 **`timer1.h`** — Timer1 functions declarations and macro definitions.
+* 📄 **`timer1_cfg.h`** — Timer1 Modes configurations.
+* 📄 **`timer1_priv.h`** — Timer1 private macros.
+</details>
+
+<details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>USART/</b> (Universal Synchronous/Asynchronous Receiver/Transmitter Driver)</summary>
 
 * 📄 **`usart.c`** — Implementation of usart functions.
@@ -109,18 +118,27 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>CLCD/</b> (Character LCD Driver)</summary>
 
-* 📄 **`CLCD_config.h`** — Interface pin routing layout.
-* 📄 **`CLCD_int.h`** — Character LCD Functions declarations.
 * 📄 **`CLCD_prog.c`** — Character LCD Functions implementations.
+* 📄 **`CLCD_int.h`** — Character LCD Functions declarations.
+* 📄 **`CLCD_config.h`** — Interface pin routing layout.
 </details>
 
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>KPAD/</b> (Matrix Keypad Driver)</summary>
 
-* 📄 **`KPAD_config.h`** — Row/column matrix pins.
-* 📄 **`KPAD_int.h`** — Matrix keypad Functions declarations.
-* 📄 **`KPAD_priv.h`** — Row/column matrix key numbers/definitions.
 * 📄 **`KPAD_prog.c`** — Matrix keypad Functions implementations.
+* 📄 **`KPAD_int.h`** — Matrix keypad Functions declarations.
+* 📄 **`KPAD_config.h`** — Row/column matrix pins.
+* 📄 **`KPAD_priv.h`** — Row/column matrix key numbers/definitions.
+</details>
+
+<details>
+<summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>DCMOTOR/</b> (DC Motor Driver)</summary>
+
+* 📄 **`dcmotor_.c`** — DC Motor Functions implementations.
+* 📄 **`dcmotor_.h`** — DC Motor Functions declarations.
+* 📄 **`dcmotor_cfg.h`** — Motor direction pins and PWM channel configurations.
+* 📄 **`dcmotor_priv.h`** — DC Motor private macros.
 </details>
 
 <details>
@@ -223,69 +241,122 @@ void DIO_voidEnablePullUp (u8 Copy_u8PortID,u8 Copy_u8PinID);
 ### GIE Driver (`gie.h`)
 ```c
 void GIE_voidEnableGlobalInterrupt(void);
-//  allows user to enable Global interrupts
+// allows user to enable Global interrupts
 
 void GIE_voidDisableGlobalInterrupt(void);
-//  allows user to disable Global interrupts
+// allows user to disable Global interrupts
 ```
 ### EXTI Driver (`exti.h`)
 ```c
 void EXTI_voidEnableInt(u8 Copy_u8Int);
-//  allows user to enable an interrupt pin
+// allows user to enable an interrupt pin
 
 void EXTI_voidDisableInt(u8 Copy_u8Int);
-//  allows user to disable an interrupt pin
+// allows user to disable an interrupt pin
 
 void EXTI_voidSetSenseControl(u8 Copy_u8Int,u8 Copy_u8SC);
-//  allows user to control what causes an interrupt ex: Falling edge
+// allows user to control what causes an interrupt ex: Falling edge
 
 void EXTI_INT0_CallBack(void(*Copy_ptrvoidCallBackFunc)(void));
-//  allows user to control Interrupt 0 routine
+// allows user to control Interrupt 0 routine
 
 void EXTI_INT1_CallBack(void(*Copy_ptrvoidCallBackFunc)(void));
-//  allows user to control Interrupt 1 routine
+// allows user to control Interrupt 1 routine
 
 void EXTI_INT2_CallBack(void(*Copy_ptrvoidCallBackFunc)(void));
-//  allows user to control Interrupt 2 routine
+// allows user to control Interrupt 2 routine
 ```
 ### ADC Driver (`adc.h`)
 ```c
 void ADC_voidInit(void);
-//  initializes the ADC
+// initializes the ADC
 
 u16 ADC_u16ReadValue(u8 Copy_u8Channel);
-//  allows user to read the digital value from the ADC
+// allows user to read the digital value from the ADC
 ```
 ### Timer0 Driver (`timer0.h`)
 ```c
 void TIMER0_voidInit(u8 Copy_u8Prescaler, u8 Copy_u8Mode);
-//  initializes timer0 and allows user to choose the clock pre-scaler and Mode
+// initializes timer0 and allows user to choose the clock pre-scaler and Mode
 
 void TIMER0_voidSetPreloadVal(u8 Copy_u8Val);
-//  allows user to preload the timer (count from an offset)
+// allows user to preload timer0 (count from an offset)
 
 void TIMER0_voidSetOCRVal(u8 Copy_u8Val);
-//  allows user to set the OCR0 value
+// allows user to set the OCR0 value
 
 void TIMER0_voidSetDutyCycle(u8 Copy_u8DutyCycle);
-//  allows the user to set the pulse duty cycle
+// allows the user to set the pulse duty cycle
 
 void TIMER0_voidSetCallBackOCR(void (*Copy_ptrvoidCallBackFunc)(void));
-//  allows user to control timer0 (output compare) Interrupt routine
+// allows user to control timer0 (output compare) Interrupt routine
 
 void TIMER0_voidSetCallBackOVF(void (*Copy_ptrvoidCallBackFunc)(void));
-//  allows user to control timer0 (overflow) Interrupt routine
+// allows user to control timer0 (overflow) Interrupt routine
+```
+### Timer1 Driver (`timer1.h`)
+```c
+void TIMER1_voidInit(u8 Copy_u8Prescaler, u8 Copy_u8Mode);
+// initializes timer1 and allows user to choose the clock pre-scaler and Mode
+
+void TIMER1_voidSetPreloadVal(u16 Copy_u16Val);
+// allows user to preload timer1 (count from an offset)
+
+u16  TIMER1_u16GetTimerVal(void);
+// allows user to read the current count value inside timer1
+
+void TIMER1_voidSetOCR1AVal(u16 Copy_u16Val);
+// allows user to set the OCR1A value
+
+void TIMER1_voidSetOCR1BVal(u16 Copy_u16Val);
+// allows user to set the OCR1B value
+
+void TIMER1_voidSetICR1Val(u16 Copy_u16Val);
+// allows user to set the ICR1 value (TOP ceiling for PWM/CTC modes)
+
+void TIMER1_voidSetDutyCycleA(u8 Copy_u8DutyCycle);
+// allows user to set the pulse duty cycle (0-100%) on Channel A (OC1A / PD5)
+
+void TIMER1_voidSetDutyCycleB(u8 Copy_u8DutyCycle);
+// allows user to set the pulse duty cycle (0-100%) on Channel B (OC1B / PD4)
+
+void TIMER1_voidICUInit(u8 Copy_u8Edge);
+// initializes the Input Capture Unit (ICU) with a trigger edge and enables its interrupt
+
+void TIMER1_voidICUSetEdge(u8 Copy_u8Edge);
+// allows user to set the ICU trigger edge (Rising or Falling)
+
+u16  TIMER1_u16GetICR1Val(void);
+// allows user to read the captured timestamp value from ICR1
+
+void TIMER1_voidICUEnableInterrupt(void);
+// allows user to enable the Input Capture (ICU) interrupt
+
+void TIMER1_voidICUDisableInterrupt(void);
+// allows user to disable the Input Capture (ICU) interrupt
+
+void TIMER1_voidSetCallBackOVF(void (*Copy_ptrvoidCallBackFunc)(void));
+// allows user to control timer1 (overflow) Interrupt routine
+
+void TIMER1_voidSetCallBackCOMPA(void (*Copy_ptrvoidCallBackFunc)(void));
+// allows user to control timer1 (output compare A) Interrupt routine
+
+void TIMER1_voidSetCallBackCOMPB(void (*Copy_ptrvoidCallBackFunc)(void));
+// allows user to control timer1 (output compare B) Interrupt routine
+
+void TIMER1_voidSetCallBackICU(void (*Copy_ptrvoidCallBackFunc)(void));
+// allows user to control timer1 (input capture) Interrupt routine
 ```
 ### USART/UART Driver (`usart.h`)
 ```c
 void UART_voidInit(void);
-//  initializes USART/UART
+// initializes USART/UART
 
 void UART_voidSend(u8 Copy_u8data);
-//  allows user to send data
+// allows user to send data
 
 u8 UART_u8Receive(void);
-//  allows user to receive data
+// allows user to receive data
 
 void UART_voidSendString(const u8 *Copy_u8Str);
 // allows user to send a string
@@ -293,51 +364,51 @@ void UART_voidSendString(const u8 *Copy_u8Str);
 ### SPI Driver (`spi.h`)
 ```c
 void SPI_voidMasterInit(void);
-//  initializes SPI Master
+// initializes SPI Master
 
 u8 SPI_u8MasterSend(u8 Copy_u8data);
-//  allows user to send/receive data as Master
+// allows user to send/receive data as Master
 
 void SPI_voidSlaveInit(void);
-//  initializes SPI Slave
+// initializes SPI Slave
 
 u8 SPI_u8SlaveSend(u8 Copy_u8data);
-//  allows user to send/receive data as Slave
+// allows user to send/receive data as Slave
 ```
 ### TWI/I2C Driver (`twi.h`)
 ```c
 void TWI_MasterInit(void);
-//  initializes TWI/I2C Master
+// initializes TWI/I2C Master
 
 u8 TWI_u8SendStartCondition(void);
-//  allows user to send start contidtion
+// allows user to send start contidtion
 
 u8 TWI_u8SendRepStartCondition(void);
-//  allows user to send repeated start contidtion
+// allows user to send repeated start contidtion
 
 u8 TWI_u8SendStopCondition(void);
-//  allows user to send stop contidtion
+// allows user to send stop contidtion
 
 u8 TWI_u8MasterSendSlaveAddWithRead(u8 Copy_u8SLA);
-//  allows user to send the slave address and read bit
+// allows user to send the slave address and read bit
 
 u8 TWI_u8MasterSendSlaveAddWithWrite(u8 Copy_u8SLA);
-//  allows user to send the slave address and write bit
+// allows user to send the slave address and write bit
 
 u8 TWI_u8MasterSendData(u8 Copy_u8Data);
-//  allows user to send data as Master
+// allows user to send data as Master
 
 u8 TWI_u8MasterReceiveData(u8* Copy_u8Data);
-//  allows user to receive data as Master
+// allows user to receive data as Master
 
 void TWI_SlaveInit(void);
-//  initializes TWI/I2C Slave
+// initializes TWI/I2C Slave
 
 u8 TWI_u8SlaveSendData(u8 Copy_u8Data);
-//  allows user to send data as Slave
+// allows user to send data as Slave
 
 u8 TWI_u8SlaveReceiveData(u8* Copy_u8Data);
-//  allows user to receive data as Slave
+// allows user to receive data as Slave
 ```
 ### EEPROM (`eeprom.h`)
 ```c
@@ -389,4 +460,36 @@ void EEPROM_EXT_voidSendDataByte(u16 Copy_u16LocationAddress, u8 Copy_u8DataByte
 
 u8 EEPROM_EXT_u8ReadDataByte(u16 Copy_u16LocationAddress);
 // allows user to Read data in the external EEPROM
+```
+### DCMOTOR Driver (`dcmotor.h`)
+```c
+void DCMOTOR_voidInit(void);
+// initializes the motors
+
+void DCMOTOR_voidRotateCW(u8 Copy_u8MotorId, u8 Copy_u8SpeedPercent);
+// allows user to Rotate one motor Clock-Wise
+
+void DCMOTOR_voidRotateCCW(u8 Copy_u8MotorId, u8 Copy_u8SpeedPercent);
+// allows user to Rotate one motor Counter Clock-Wise
+
+void DCMOTOR_voidSetSpeed(u8 Copy_u8MotorId, u8 Copy_u8SpeedPercent);
+// allows user to control motor speed
+
+void DCMOTOR_voidStop(u8 Copy_u8MotorId);
+// allows user to stop one motor
+
+void DCMOTOR_voidMoveForward(u8 Copy_u8SpeedPercent);
+// allows user to move both motors Forward (Clock-Wise)
+
+void DCMOTOR_voidMoveBackward(u8 Copy_u8SpeedPercent);
+// allows user to move both motors Backward (Counter Clock-Wise)
+
+void DCMOTOR_voidTurnRight(u8 Copy_u8SpeedPercent);
+// allows user to turn right (right motor -> ccw , left motor -> cw)
+
+void DCMOTOR_voidTurnLeft(u8 Copy_u8SpeedPercent);
+// allows user to turn left (right motor -> cw , left motor -> ccw)
+
+void DCMOTOR_voidStopAll(void);
+// allows user to stop all motors
 ```
