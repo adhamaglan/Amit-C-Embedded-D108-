@@ -12,7 +12,7 @@
 
 
 #define CLCD_TYPE			CLCD_4_BITS		//  choose interface between (CLCD_4_BITS or CLCD_8_BITS)
-#define CLCD_DATA_PORT		DIO_PORTA		//  choose Data Port
+#define CLCD_DATA_PORT		DIO_PORTC		//  choose Data Port
 
 #if CLCD_TYPE == CLCD_4_BITS
 #define  CLCD_DATA_PIN0		DIO_PIN4		//  choose Data Pin0

@@ -195,7 +195,7 @@ void TWI_SlaveInit(u8 Copy_u8SLA)
 
 
 
-u8 TWI_u8SlaveSendDataByte(u8 Copy_u8Data)
+u8 TWI_u8SlaveSendData(u8 Copy_u8Data)
 {
 	u8 Local_u8ErrStatus = NoError;
 	// Clear TWINT flag, enable TWI, and set TWEA to send ACK to listen on the bus
@@ -226,7 +226,7 @@ u8 TWI_u8SlaveSendDataByte(u8 Copy_u8Data)
 
 
 
-u8 TWI_u8SlaveReceiveDataByte(u8* Copy_u8Data)
+u8 TWI_u8SlaveReceiveData(u8* Copy_u8Data)
 {
 	u8 Local_u8ErrStatus = NoError;
 	if (Copy_u8Data != NULL)

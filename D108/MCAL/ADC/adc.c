@@ -9,7 +9,7 @@
 #include "../regdef.h"
 #include "adc.h"
 
-void ADC_voidInit()
+void ADC_voidInit(void)
 {
 	// select AVCC
 	SET_BIT(ADMUX_REG,ADMUX_REFS0);

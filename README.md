@@ -38,71 +38,70 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>DIO/</b> (Digital Input/Output Driver)</summary>
 
-* 📄 `dio.c` — Implementation of pin/port controls ( direction, value, etc... ).
-* 📄 `dio.h` — Pin/Port directions and macro definitions.
+* 📄 **`dio.c`** — Implementation of pin/port controls ( direction, value, etc... ).
+* 📄 **`dio.h`** — Pin/Port directions and macro definitions.
 </details>
 
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>GIE/</b> (Global Interrupt Enable Driver)</summary>
 
-* 📄 `gie.c` — Implementation of global Interrupt Enable functions.
-* 📄 `gie.h` — global Interrupt Enable functions declarations.
+* 📄 **`gie.c`** — Implementation of global Interrupt Enable functions.
+* 📄 **`gie.h`** — global Interrupt Enable functions declarations.
 </details>
 
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>EXTI/</b> (External Interrupts Driver)</summary>
 
-* 📄 `exti.c` — Implementation of interrupts control, sense control, call-back functions.
-* 📄 `exti.h` — External interrupts functions declarations and macro definitions.
+* 📄 **`exti.c`** — Implementation of interrupts control, sense control, call-back functions.
+* 📄 **`exti.h`** — External interrupts functions declarations and macro definitions.
 </details>
 
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>ADC/</b> (Analogue to digital converter Driver)</summary>
 
-* 📄 `adc.c` — Implementation of Analogue to digital converter functions.
-* 📄 `adc.h` — Analogue to digital converter functions declarations and macro definitions.
+* 📄 **`adc.c`** — Implementation of Analogue to digital converter functions.
+* 📄 **`adc.h`** — Analogue to digital converter functions declarations and macro definitions.
 </details>
 
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>TIMER0/</b> (Timer/Counter 0 Driver)</summary>
 
-* 📄 `timer0.c` — Implementation of Timer0 functions.
-* 📄 `timer0.h` — Timer0 functions declarations and macro definitions.
-* 📄 `timer0_cfg.h` — Timer0 Modes configurations.
-* 📄 `timer0_priv.h` — Timer0 private macros.
+* 📄 **`timer0.c`** — Implementation of Timer0 functions.
+* 📄 **`timer0.h`** — Timer0 functions declarations and macro definitions.
+* 📄 **`timer0_cfg.h`** — Timer0 Modes configurations.
+* 📄 **`timer0_priv.h`** — Timer0 private macros.
 </details>
 
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>USART/</b> (Universal Synchronous/Asynchronous Receiver/Transmitter Driver)</summary>
 
-* 📄 `usart.c` — Implementation of usart functions.
-* 📄 `usart.h` — usart functions declarations.
+* 📄 **`usart.c`** — Implementation of usart functions.
+* 📄 **`usart.h`** — usart functions declarations.
 </details>
 
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>SPI/</b> (Serial Peripheral Interface Driver)</summary>
 
-* 📄 `spi.c` — Implementation of spi functions.
-* 📄 `spi.h` — spi functions declarations and macro definitions.
+* 📄 **`spi.c`** — Implementation of spi functions.
+* 📄 **`spi.h`** — spi functions declarations and macro definitions.
 </details>
 
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>TWI (I2C)/</b> (Two-Wire Interface Driver)</summary>
 
-* 📄 `twi.c` — Implementation of twi functions.
-* 📄 `twi.h` — twi functions declarations and error status enum.
-* 📄 `twi_cfg.h` — twi frequency and clock configurations.
-* 📄 `twi_priv.h` — twi private macros.
+* 📄 **`twi.c`** — Implementation of twi functions.
+* 📄 **`twi.h`** — twi functions declarations and error status enum.
+* 📄 **`twi_cfg.h`** — twi frequency and clock configurations.
+* 📄 **`twi_priv.h`** — twi private macros.
 </details>
 
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>EEPROM/</b> (Electrically Erasable Programmable Read-Only Memory [Internal])</summary>
 
-* 📄 `eeprom.c` — Implementation of eeprom functions.
-* 📄 `eeprom.h` — eeprom functions declarations.
+* 📄 **`eeprom.c`** — Implementation of eeprom functions.
+* 📄 **`eeprom.h`** — eeprom functions declarations.
 </details>
 </details>
-
 
 <details>
 <summary>📂 <b>HAL</b> (Hardware Abstraction Layer)</summary>
@@ -110,24 +109,25 @@ git clone https://github.com/adhamaglan/Amit-C-Embedded-D108-.git
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>CLCD/</b> (Character LCD Driver)</summary>
 
-* 📄 `CLCD_config.h` — Interface pin routing layout.
-* 📄 `CLCD_int.h` — Character LCD Functions declarations.
-* 📄 `CLCD_prog.c` — Character LCD Functions implementations.
+* 📄 **`CLCD_config.h`** — Interface pin routing layout.
+* 📄 **`CLCD_int.h`** — Character LCD Functions declarations.
+* 📄 **`CLCD_prog.c`** — Character LCD Functions implementations.
 </details>
 
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>KPAD/</b> (Matrix Keypad Driver)</summary>
 
-* 📄 `KPAD_config.h` — Row/column matrix pins.
-* 📄 `KPAD_int.h` — Matrix keypad Functions declarations.
-* 📄 `KPAD_priv.h` — Row/column matrix key numbers/definitions.
-* 📄 `KPAD_prog.c` — Matrix keypad Functions implementations.
+* 📄 **`KPAD_config.h`** — Row/column matrix pins.
+* 📄 **`KPAD_int.h`** — Matrix keypad Functions declarations.
+* 📄 **`KPAD_priv.h`** — Row/column matrix key numbers/definitions.
+* 📄 **`KPAD_prog.c`** — Matrix keypad Functions implementations.
 </details>
+
 <details>
 <summary>&nbsp;&nbsp;&nbsp;&nbsp;📂 <b>EEPROM_EXT/</b> (Electrically Erasable Programmable Read-Only Memory [External])</summary>
 
-* 📄 `eeprom_ext.c` — Implementation of eeprom functions.
-* 📄 `eeprom_ext.h` — eeprom functions declarations.
+* 📄 **`eeprom_ext.c`** — Implementation of eeprom functions.
+* 📄 **`eeprom_ext.h`** — eeprom functions declarations.
 </details>
 </details>
 
@@ -253,7 +253,7 @@ void EXTI_INT2_CallBack(void(*Copy_ptrvoidCallBackFunc)(void));
 void ADC_voidInit(void);
 //  initializes the ADC
 
-u16	 ADC_u16ReadValue(u8 Copy_u8Channel);
+u16 ADC_u16ReadValue(u8 Copy_u8Channel);
 //  allows user to read the digital value from the ADC
 ```
 ### Timer0 Driver (`timer0.h`)

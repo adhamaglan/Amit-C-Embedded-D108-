@@ -16,12 +16,21 @@
 // ---------------------------------------
 
 //	Timer Interrupt Registers
-#define TIMSK_REG   *((volatile u8*)(0x59))		// Interrupt Mask Register (Enables Timer Interrupts)
-#define TIMSK_TOIE0 0							// Timer0 Overflow Interrupt Enable Bit
-#define TIMSK_OCIE0 1							// Timer0 OCR Interrupt Enable Bit
-#define TIFR_REG    *((volatile u8*)(0x58))		// Interrupt Flag Register (gets cleared automatically if GIE and TIMSK are enabled)
-#define TIFR_TOV0   0							// Timer0 Overflow Flag Bit
-#define TIFR_OCF0   1							// Timer0 OCR Flag Bit
+#define TIMSK_REG       *((volatile u8*)(0x59))		// Interrupt Mask Register (Enables Timer Interrupts)
+#define TIMSK_TOIE0     0							// Timer0 Overflow Interrupt Enable Bit
+#define TIMSK_OCIE0     1							// Timer0 OCR Interrupt Enable Bit
+#define TIMSK_TOIE1     2							// Timer1 Overflow Interrupt Enable Bit
+#define TIMSK_OCIE1B    3							// Timer1 Compare Match B Interrupt Enable Bit
+#define TIMSK_OCIE1A    4							// Timer1 Compare Match A Interrupt Enable Bit
+#define TIMSK_TICIE1    5							// Timer1 Input Capture Interrupt Enable Bit
+
+#define TIFR_REG        *((volatile u8*)(0x58))		// Interrupt Flag Register (gets cleared automatically if GIE and TIMSK are enabled)
+#define TIFR_TOV0       0							// Timer0 Overflow Flag Bit
+#define TIFR_OCF0       1							// Timer0 OCR Flag Bit
+#define TIFR_TOV1       2							// Timer1 Overflow Flag Bit
+#define TIFR_OCF1B      3							// Timer1 Compare Match B Flag Bit
+#define TIFR_OCF1A      4							// Timer1 Compare Match A Flag Bit
+#define TIFR_ICF1       5							// Timer1 Input Capture Flag Bit
 // ---------------------------------------
 
 //	External interrupt registers
@@ -88,6 +97,38 @@
 #define	TCCR0_FOC0  7							//	Timer0 Force Output Compare
 #define TCNT0_REG	*((volatile u8*)(0x52))		//	Timer/Counter Register
 #define OCR0_REG	*((volatile u8*)(0x5C))		//	Output Compare Register
+// ---------------------------------------
+
+//	Timer 1 registers
+#define TCCR1A_REG      *((volatile u8*)(0x4F))		//	Timer/Counter1 Control Register A
+#define TCCR1A_WGM10    0							//	Waveform Generation Mode Bit 0
+#define TCCR1A_WGM11    1							//	Waveform Generation Mode Bit 1
+#define TCCR1A_FOC1B    2							//	Force Output Compare for Channel B
+#define TCCR1A_FOC1A    3							//	Force Output Compare for Channel A
+#define TCCR1A_COM1B0   4							//	Compare Output Mode for Channel B Bit 0
+#define TCCR1A_COM1B1   5							//	Compare Output Mode for Channel B Bit 1
+#define TCCR1A_COM1A0   6							//	Compare Output Mode for Channel A Bit 0
+#define TCCR1A_COM1A1   7							//	Compare Output Mode for Channel A Bit 1
+#define TCCR1B_REG      *((volatile u8*)(0x4E))		//	Timer/Counter1 Control Register B
+#define TCCR1B_CS10     0							//	Clock Select Bit 0
+#define TCCR1B_CS11     1							//	Clock Select Bit 1
+#define TCCR1B_CS12     2							//	Clock Select Bit 2
+#define TCCR1B_WGM12    3							//	Waveform Generation Mode Bit 2
+#define TCCR1B_WGM13    4							//	Waveform Generation Mode Bit 3
+#define TCCR1B_ICES1    6							//	Input Capture Edge Select
+#define TCCR1B_ICNC1    7							//	Input Capture Noise Canceler
+#define TCNT1H_REG      *((volatile u8*)(0x4D))		//	Timer/Counter1 Register HIGH
+#define TCNT1L_REG      *((volatile u8*)(0x4C))		//	Timer/Counter1 Register LOW
+#define TCNT1_REG       *((volatile u16*)(0x4C))	//	Timer/Counter1 16-bit Register
+#define OCR1AH_REG      *((volatile u8*)(0x4B))		//	Output Compare Register 1 A HIGH
+#define OCR1AL_REG      *((volatile u8*)(0x4A))		//	Output Compare Register 1 A LOW
+#define OCR1A_REG       *((volatile u16*)(0x4A))	//	Output Compare Register 1 A (16-bit)
+#define OCR1BH_REG      *((volatile u8*)(0x49))		//	Output Compare Register 1 B HIGH
+#define OCR1BL_REG      *((volatile u8*)(0x48))		//	Output Compare Register 1 B LOW
+#define OCR1B_REG       *((volatile u16*)(0x48))	//	Output Compare Register 1 B (16-bit)
+#define ICR1H_REG       *((volatile u8*)(0x47))		//	Input Capture Register 1 HIGH
+#define ICR1L_REG       *((volatile u8*)(0x46))		//	Input Capture Register 1 LOW
+#define ICR1_REG        *((volatile u16*)(0x46))	//	Input Capture Register 1 (16-bit)
 // ---------------------------------------
 
 //	USART registers

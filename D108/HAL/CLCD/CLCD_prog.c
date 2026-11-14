@@ -36,7 +36,7 @@ static void setHalfPort(u8 data)
 #endif
 
 
-
+/*
 void CLCD_voidInit(void)
 {
 	DIO_voidSetPinDir(CLCD_CTRL_PORT,CLCD_RS_PIN,DIO_PIN_OUTPUT);
@@ -69,6 +69,63 @@ void CLCD_voidInit(void)
 	CLCD_voidSendInst(0x0C);
 	// Clear Display 
 	CLCD_voidSendInst(0x01);
+}
+*/
+
+
+// new function
+void CLCD_voidInit(void)
+{
+	DIO_voidSetPinDir(CLCD_CTRL_PORT, CLCD_RS_PIN, DIO_PIN_OUTPUT);
+	DIO_voidSetPinDir(CLCD_CTRL_PORT, CLCD_RW_PIN, DIO_PIN_OUTPUT);
+	DIO_voidSetPinDir(CLCD_CTRL_PORT, CLCD_E_PIN,  DIO_PIN_OUTPUT);
+
+	#if CLCD_TYPE == CLCD_8_BITS
+	DIO_voidSetPortDir(CLCD_DATA_PORT, DIO_PORT_OUTPUT);
+	_delay_ms(50);
+	CLCD_voidSendInst(0x38); // 8-bit mode, 2 lines, 5x7 font
+	#elif CLCD_TYPE == CLCD_4_BITS
+	DIO_voidSetPinDir(CLCD_DATA_PORT, CLCD_DATA_PIN0, DIO_PIN_OUTPUT);
+	DIO_voidSetPinDir(CLCD_DATA_PORT, CLCD_DATA_PIN1, DIO_PIN_OUTPUT);
+	DIO_voidSetPinDir(CLCD_DATA_PORT, CLCD_DATA_PIN2, DIO_PIN_OUTPUT);
+	DIO_voidSetPinDir(CLCD_DATA_PORT, CLCD_DATA_PIN3, DIO_PIN_OUTPUT);
+
+	_delay_ms(50); // Wait >40ms after VDD rises to 4.5V
+
+	// Reset RS and RW for instructions
+	DIO_voidSetPinVal(CLCD_CTRL_PORT, CLCD_RS_PIN, DIO_PIN_LOW);
+	DIO_voidSetPinVal(CLCD_CTRL_PORT, CLCD_RW_PIN, DIO_PIN_LOW);
+
+	// --- 3-Step Hardware Reset Sequence (Forces LCD out of desync state) ---
+	setHalfPort(0x03);
+	sendEnablePulse();
+	_delay_ms(5);
+
+	setHalfPort(0x03);
+	sendEnablePulse();
+	_delay_us(150);
+
+	setHalfPort(0x03);
+	sendEnablePulse();
+	_delay_us(150);
+
+	// --- Select 4-Bit Mode ---
+	setHalfPort(0x02);
+	sendEnablePulse();
+	_delay_us(150);
+
+	// --- Function Set: 4-bit mode, 2 lines display, 5x7 font ---
+	CLCD_voidSendInst(0x28);
+	#endif
+
+	// Display ON/OFF: Display ON, Cursor OFF, Blink OFF
+	CLCD_voidSendInst(0x0C);
+
+	// Clear Display
+	CLCD_voidClearScreen();
+
+	// Entry Mode Set: Increment cursor automatically (Left to Right)
+	CLCD_voidSendInst(0x06);
 }
 
 

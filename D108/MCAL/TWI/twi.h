@@ -33,8 +33,8 @@ u8 TWI_u8MasterReceiveDataWithACK(u8* Copy_u8Data);
 u8 TWI_u8MasterReceiveDataWithNACK(u8* Copy_u8Data);
 
 void TWI_SlaveInit(u8 Copy_u8SLA);
-u8 TWI_u8SlaveSendDataByte(u8 Copy_u8Data);
-u8 TWI_u8SlaveReceiveDataByte(u8* Copy_u8Data);
+u8 TWI_u8SlaveSendData(u8 Copy_u8Data);
+u8 TWI_u8SlaveReceiveData(u8* Copy_u8Data);
 
 
 

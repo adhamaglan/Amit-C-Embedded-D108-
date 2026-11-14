@@ -148,6 +148,69 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="FreeRTOS\croutine.c">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="FreeRTOS\croutine.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="FreeRTOS\FreeRTOS.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="FreeRTOS\FreeRTOSConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="FreeRTOS\heap_1.c">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="FreeRTOS\list.c">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="FreeRTOS\list.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="FreeRTOS\macros.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="FreeRTOS\mpu_wrappers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="FreeRTOS\port.c">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="FreeRTOS\portable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="FreeRTOS\portmacro.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="FreeRTOS\projdefs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="FreeRTOS\queue.c">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="FreeRTOS\queue.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="FreeRTOS\semphr.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="FreeRTOS\StackMacros.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="FreeRTOS\task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="FreeRTOS\tasks.c">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="FreeRTOS\timers.c">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="FreeRTOS\timers.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\CLCD\CLCD_config.h">
       <SubType>compile</SubType>
     </Compile>
@@ -158,6 +221,18 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\CLCD\CLCD_prog.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\DCMOTOR\dcmotor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\DCMOTOR\dcmotor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\DCMOTOR\dcmotor_cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\DCMOTOR\dcmotor_priv.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\EEPROM_EXT\eeprom_ext.c">
@@ -229,6 +304,18 @@
     <Compile Include="MCAL\TIMER0\timer0_priv.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\TIMER1\timer1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER1\timer1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER1\timer1_cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\TIMER1\timer1_priv.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MCAL\TWI\twi.c">
       <SubType>compile</SubType>
     </Compile>
@@ -247,6 +334,12 @@
     <Compile Include="MCAL\USART\usart.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\USART\usart_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\USART\usart_priv.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="service\bit_math.h">
       <SubType>compile</SubType>
     </Compile>
@@ -258,6 +351,7 @@
     <Folder Include="HAL\CLCD" />
     <Folder Include="HAL\KPAD" />
     <Folder Include="HAL\EEPROM_EXT" />
+    <Folder Include="HAL\DCMOTOR" />
     <Folder Include="MCAL" />
     <Folder Include="HAL" />
     <Folder Include="MCAL\DIO" />
@@ -265,10 +359,12 @@
     <Folder Include="MCAL\EXTI" />
     <Folder Include="MCAL\ADC" />
     <Folder Include="MCAL\EEPROM" />
+    <Folder Include="MCAL\TIMER1" />
     <Folder Include="MCAL\TWI" />
     <Folder Include="MCAL\SPI" />
     <Folder Include="MCAL\USART" />
     <Folder Include="MCAL\TIMER0" />
+    <Folder Include="FreeRTOS" />
     <Folder Include="service" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
